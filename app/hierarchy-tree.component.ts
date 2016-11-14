@@ -15,7 +15,7 @@ export class HierarchyTreeComponent implements OnInit {
 
     ngOnInit() {
         console.log(this.data);
-    }
+    };
 
     onAddNewNodeClick() {
         this.inAddNewMode = true;
@@ -30,6 +30,5 @@ export class HierarchyTreeComponent implements OnInit {
     onRemoveNodeClick(id: number) {
         this.hierarchyService.removeNode(id);
         this.data = this.hierarchyService.getData();
-        console.log(this.data);
     };
 }

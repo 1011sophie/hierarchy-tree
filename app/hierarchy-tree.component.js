@@ -17,8 +17,9 @@ var HierarchyTreeComponent = (function () {
         this.inAddNewMode = false;
     }
     HierarchyTreeComponent.prototype.ngOnInit = function () {
-        console.log(this.data);
+        this.data = this.tree;
     };
+    ;
     HierarchyTreeComponent.prototype.onAddNewNodeClick = function () {
         this.inAddNewMode = true;
     };
@@ -31,13 +32,12 @@ var HierarchyTreeComponent = (function () {
     HierarchyTreeComponent.prototype.onRemoveNodeClick = function (id) {
         this.hierarchyService.removeNode(id);
         this.data = this.hierarchyService.getData();
-        console.log(this.data);
     };
     ;
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], HierarchyTreeComponent.prototype, "data", void 0);
+    ], HierarchyTreeComponent.prototype, "tree", void 0);
     HierarchyTreeComponent = __decorate([
         core_1.Component({
             selector: 'hierarchy-tree',

@@ -13,16 +13,15 @@ var hierarchy_tree_service_1 = require('./hierarchy-tree.service');
 var AppComponent = (function () {
     function AppComponent(hierarchyService) {
         this.hierarchyService = hierarchyService;
-        this.data = this.hierarchyService.getData();
     }
     AppComponent.prototype.ngOnInit = function () {
-        console.log(this.data);
+        this.data = this.hierarchyService.getData();
     };
     ;
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            template: '<hierarchy-tree [data]="data"></hierarchy-tree>',
+            template: '<hierarchy-tree [tree]="data"></hierarchy-tree>',
             providers: [hierarchy_tree_service_1.HierarchyService],
         }), 
         __metadata('design:paramtypes', [hierarchy_tree_service_1.HierarchyService])

@@ -1,14 +1,14 @@
-<ul>
+<ul ng-if="data!=null&&data.length!=0">
     <li *ngFor="let node of data">
         <span>{{node.name}}</span>
-        <button (click)="onAddNewNodeClick(node.id)">Add New</button>
+        <button (click)="onAddNewNodeClick()">Add New</button>
         <button (click)="onRemoveNodeClick(node.id)">Remove</button>
+        <div *ngIf="inAddNewMode">
+            <span>Type the name of new node:</span>
+            <input type="text" [(ngModel)]="newNodeName" />
+            <button (click)="onAddNewNodeSubmitClick(node.id)" </div>
         <div>
-            <hierarchy-tree [data]="node.children"></hierarchy-tree>
+            <hierarchy-tree [tree]="node.children"></hierarchy-tree>
         </div>
     </li>
 </ul>
-<div *ngIf="inAddNewMode">
-    <span>Type the name of new node:</span>
-    <input type="text" [(ngModel)]="newNodeName" />
-</div>

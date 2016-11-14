@@ -4,15 +4,15 @@ import { HierarchyService } from './hierarchy-tree.service';
 
 @Component({
   selector: 'app',
-  template: '<hierarchy-tree [data]="data"></hierarchy-tree>',
+  template: '<hierarchy-tree [tree]="data"></hierarchy-tree>',
   providers: [HierarchyService],
 })
 export class AppComponent implements OnInit {
   constructor(private hierarchyService: HierarchyService) {
   }
-  data: HierarchyTreeNode[] = this.hierarchyService.getData();
+  data: HierarchyTreeNode[];
 
   ngOnInit() {
-    console.log(this.data);
+    this.data = this.hierarchyService.getData();
   };
 }
