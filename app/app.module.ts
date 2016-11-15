@@ -8,6 +8,6 @@ import { HierarchyTreeComponent } from './hierarchy-tree.component';
 @NgModule({
   imports: [BrowserModule, FormsModule],
   declarations: [AppComponent, HierarchyTreeComponent],
-  bootstrap: [AppComponent, HierarchyTreeComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
