@@ -16,8 +16,14 @@ export class HierarchyService {
         var node = this.findNodeById(this.data, id);
         let parentNode = this.findParentNode(this.data, id);
         if (parentNode)
-            parentNode.children = null;
-        else this.data = null;
+            for (var item of parentNode.children) {
+                if (id == item.id) {
+                    let index = parentNode.children.indexOf(item);
+                    parentNode.children.splice(index, 1);
+                }
+            }            
+        else this.data = [];
+        console.log(this.data);
     };
 
     addNode(id: number, name: string): void {
@@ -25,8 +31,7 @@ export class HierarchyService {
         let newNode = <HierarchyTreeNode>{
             id: newId,
             name: name,
-            children: null,
-            isRoot: false
+            children: null
         };
         var node = this.findNodeById(this.data, id);
         node.children.push(newNode);

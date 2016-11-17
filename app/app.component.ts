@@ -4,7 +4,7 @@ import { HierarchyService } from './hierarchy-tree.service';
 
 @Component({
   selector: 'app',
-  template: '<hierarchy-tree [tree]="data"></hierarchy-tree>',
+  template: '<hierarchy-tree [data]="data" (dataChange)="dataChanged($event)"></hierarchy-tree>',
   providers: [HierarchyService],
 })
 export class AppComponent implements OnInit {
@@ -15,4 +15,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.data = this.hierarchyService.getData();
   };
+
+  dataChanged() {
+    this.data = this.hierarchyService.getData();
+  }
 }

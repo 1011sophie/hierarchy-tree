@@ -20,7 +20,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
             declarations: [app_component_1.AppComponent, hierarchy_tree_component_1.HierarchyTreeComponent],
-            bootstrap: [app_component_1.AppComponent, hierarchy_tree_component_1.HierarchyTreeComponent]
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

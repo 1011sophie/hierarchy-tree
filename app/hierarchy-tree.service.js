@@ -23,9 +23,16 @@ var HierarchyService = (function () {
         var node = this.findNodeById(this.data, id);
         var parentNode = this.findParentNode(this.data, id);
         if (parentNode)
-            parentNode.children = null;
+            for (var _i = 0, _a = parentNode.children; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (id == item.id) {
+                    var index = parentNode.children.indexOf(item);
+                    parentNode.children.splice(index, 1);
+                }
+            }
         else
-            this.data = null;
+            this.data = [];
+        console.log(this.data);
     };
     ;
     HierarchyService.prototype.addNode = function (id, name) {
@@ -33,8 +40,7 @@ var HierarchyService = (function () {
         var newNode = {
             id: newId,
             name: name,
-            children: null,
-            isRoot: false
+            children: null
         };
         var node = this.findNodeById(this.data, id);
         node.children.push(newNode);

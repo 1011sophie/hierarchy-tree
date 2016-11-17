@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HierarchyTreeNode } from './hierarchy-tree.model';
 import { HierarchyService } from './hierarchy-tree.service';
 
@@ -10,6 +10,8 @@ import { HierarchyService } from './hierarchy-tree.service';
 export class HierarchyTreeComponent implements OnInit {
     constructor(private hierarchyService: HierarchyService) { }
     @Input() data: HierarchyTreeNode[];
+    @Output() dataChange = new EventEmitter();
+
     newNodeName: string = null;
     inAddNewMode: boolean = false;
 
@@ -23,12 +25,15 @@ export class HierarchyTreeComponent implements OnInit {
 
     onAddNewNodeSubmitClick(id: number) {
         this.hierarchyService.addNode(id, this.newNodeName);
-        this.data = this.hierarchyService.getData();
+        this.dataChange.emit(id);
         this.inAddNewMode = false;
     }
 
     onRemoveNodeClick(id: number) {
         this.hierarchyService.removeNode(id);
-        this.data = this.hierarchyService.getData();
+        this.dataChange.emit(id);
+    };
+
+    dataChanged() {
     };
 }

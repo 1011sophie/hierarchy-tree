@@ -13,11 +13,12 @@ var hierarchy_tree_service_1 = require('./hierarchy-tree.service');
 var HierarchyTreeComponent = (function () {
     function HierarchyTreeComponent(hierarchyService) {
         this.hierarchyService = hierarchyService;
+        this.dataChange = new core_1.EventEmitter();
         this.newNodeName = null;
         this.inAddNewMode = false;
     }
     HierarchyTreeComponent.prototype.ngOnInit = function () {
-        this.data = this.tree;
+        console.log(this.data);
     };
     ;
     HierarchyTreeComponent.prototype.onAddNewNodeClick = function () {
@@ -26,18 +27,25 @@ var HierarchyTreeComponent = (function () {
     ;
     HierarchyTreeComponent.prototype.onAddNewNodeSubmitClick = function (id) {
         this.hierarchyService.addNode(id, this.newNodeName);
-        this.data = this.hierarchyService.getData();
+        this.dataChange.emit(id);
         this.inAddNewMode = false;
     };
     HierarchyTreeComponent.prototype.onRemoveNodeClick = function (id) {
         this.hierarchyService.removeNode(id);
-        this.data = this.hierarchyService.getData();
+        this.dataChange.emit(id);
+    };
+    ;
+    HierarchyTreeComponent.prototype.dataChanged = function () {
     };
     ;
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], HierarchyTreeComponent.prototype, "tree", void 0);
+    ], HierarchyTreeComponent.prototype, "data", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], HierarchyTreeComponent.prototype, "dataChange", void 0);
     HierarchyTreeComponent = __decorate([
         core_1.Component({
             selector: 'hierarchy-tree',

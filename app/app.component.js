@@ -18,10 +18,13 @@ var AppComponent = (function () {
         this.data = this.hierarchyService.getData();
     };
     ;
+    AppComponent.prototype.dataChanged = function () {
+        this.data = this.hierarchyService.getData();
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            template: '<hierarchy-tree [tree]="data"></hierarchy-tree>',
+            template: '<hierarchy-tree [data]="data" (dataChange)="dataChanged($event)"></hierarchy-tree>',
             providers: [hierarchy_tree_service_1.HierarchyService],
         }), 
         __metadata('design:paramtypes', [hierarchy_tree_service_1.HierarchyService])

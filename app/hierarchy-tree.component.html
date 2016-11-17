@@ -6,9 +6,10 @@
         <div *ngIf="inAddNewMode">
             <span>Type the name of new node:</span>
             <input type="text" [(ngModel)]="newNodeName" />
-            <button (click)="onAddNewNodeSubmitClick(node.id)" </div>
+            <button (click)="onAddNewNodeSubmitClick(node.id)">Submit </button>
+        </div>
         <div>
-            <hierarchy-tree [tree]="node.children"></hierarchy-tree>
+            <hierarchy-tree [data]="node.children" (dataChange)="dataChanged($event)"></hierarchy-tree>
         </div>
     </li>
 </ul>
